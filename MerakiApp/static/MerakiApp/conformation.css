@@ -1,0 +1,128 @@
+body{
+    overflow: scroll !important;
+    font-family: "Poppins",sans-serif;
+}
+
+@font-face {
+    font-family: 'Jonathan';
+    src: url('assets/Jonathan.ttf');
+
+}
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.container{
+    display: flex;
+
+
+}
+.logo-text {
+
+    text-align: center;
+    padding-top: 15px;
+    margin-top: -7%;
+    
+}
+
+
+#logo-text {
+    text-decoration: none;
+    color: black;
+    font-size: 4rem;
+    font-family: "Jonathan";
+}
+
+
+
+#all-link {
+
+    margin: 5px;
+    font-size: 16px;
+    padding: 7px 30px 7px 30px;
+    height: 31px;
+    color: white;
+    background-color: black;
+    font-family:"Poppins",sans-serif;
+    border-radius: 2px;
+    transition: 0.4s;
+    text-decoration: none;
+
+
+}
+
+#all-link:hover {
+
+    color: black;
+    background-color: wheat;
+    border: none;
+
+
+}
+.confirmed{
+
+width: 100%;
+padding: 10%;
+text-align: center;
+
+}
+
+.confirmed span{
+    font-size: 20px;
+}
+.confirmed h3{
+    font-size: 2.5rem;
+
+}
+
+
+.icon {
+    background-color: wheat;
+    height: 100%;
+    padding: 15%;
+    text-align: center;
+
+
+}
+
+
+@media (max-width:1100px){
+    .icon{
+        display: none;
+    }
+}
+
+@media (max-width:700px){
+
+#all-link {
+
+    font-size: 14px;
+    padding: 7px 20px 7px 20px;
+
+
+}
+  
+}
+@media (max-width:350px){
+
+#all-link {
+    font-size: 12px;
+    padding: 7px 15px 7px 15px;
+
+}
+}
+@media (max-width:290px){
+
+#all-link {
+    font-size: 10px;
+    padding: 7px 15px 7px 15px;
+
+}
+}

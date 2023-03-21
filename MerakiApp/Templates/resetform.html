@@ -1,0 +1,116 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/resetform.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="image-container">
+
+            <div class="image-text" id="img-text">
+
+                {%if form.errors%}
+
+                <img src="/static/MerakiApp/anxiety.png" alt="">
+
+                <span>
+
+                    {% for field in form  %}
+                    {% for errors in field.errors  %}
+                    {{errors}}
+                    <br>
+                    <br>
+                    {% endfor %}
+
+                    {% endfor %}
+
+                </span>
+
+                <div class="icon-info">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
+                    from
+                    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                {% endif %}
+            </div>
+
+
+        </div>
+
+
+        <div class="signup-container">
+            <div class="logo-text">
+                <a href="{% url 'home' %}" id="logo-text"> Meraki Cosmetics</a>
+
+            </div>
+            <span id="messages">
+                {% for field in form  %}
+                {% for errors in field.errors  %}
+                {{errors}}
+                <br>
+                <br>
+                {% endfor %}
+                {% endfor %}
+            </span>
+
+            <div class="sign-up">
+
+
+
+                {% if form %}
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+
+                    <label>New Password</label>
+                    <br>
+
+                    <input type="password" name="new_password1" id="">
+                    <br>
+
+                    <div class=" underline">
+                    </div>
+                    <br>
+                    <br>
+
+                    <label>Enter Again</label>
+                    <br>
+                    <input type="password" name="new_password2" id="">
+                    <br>
+                    <div class="underline"></div>
+                    <br><br>
+                    <button type="submit" id="submit">Submit</button>
+                    <br>
+
+                </form>
+                {% else %}
+                <label>Seems like the provided reset link is expired.</label>
+                <br>
+                {{form.new_password2}}
+                <br>
+                <div class="underline"></div>
+                <br><br>
+                <span></span>
+                <a href="{% url 'reset_password'%}"><button type="submit" id="submit">Request Reset</button></a>
+                <br>
+
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var fields = document.getElementsByTagName('input')
+    fields[1].placeholder = 'Enter a Password'
+    fields[2].placeholder = 'Enter Again'
+</script>
+
+</html>

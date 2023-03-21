@@ -1,0 +1,679 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% for products in product  %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="static/MerakiApp/images/Meraki Website Icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static  'MerakiApp/productdescription.css'  %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+        integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <title>{{products.product_name}}</title>
+
+    <style>
+        .swal-text {
+            color: black;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #swal-span {
+            color: white;
+            border: 1px solid black;
+            background-color: black;
+            padding: 5px 20px 5px 20px;
+            transition: 0.4s;
+            font-size: 14px;
+            position: absolute;
+            top: 84%;
+            left: 5%;
+            margin-right: 5%;
+
+        }
+
+        #swal-span:hover {
+
+            color: black;
+            background-color: white;
+
+        }
+
+        .swal-button {
+            padding: 5px 45px 5px 45px;
+            font-family: "Poppins", sans-serif;
+            border-radius: 0px;
+            color: white;
+            background-color: black;
+
+            margin-top: 0%;
+            transition: 0.4s;
+            font-size: 14px;
+            top: 10%;
+            border: 1px solid black !important;
+
+
+        }
+
+        .swal-button:hover {
+            background-color: white !important;
+            border: 1px solid black;
+            color: black;
+
+        }
+    </style>
+    <script>
+        var productid = '{{products.productid}}'
+        console.log(productid)
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+    <div class="container">
+
+
+        <div class="img-col">
+            <img src="{{products.firstimage.url}}" alt="" id="image">
+        </div>
+        <div class="image-btn">
+            <button onclick="document.getElementById('image').src='{{products.firstimage.url}}'" id="btn">
+                <img src="{{products.firstimage.url}}" alt="">
+            </button>
+
+            <button onclick="document.getElementById('image').src='{{products.second.url}}'" id="btn"> <img
+                    src="{{products.second.url}}" alt="">
+            </button>
+            <br>
+            <button onclick="document.getElementById('image').src='{{products.thirdimage.url}}'" id="btn"> <img
+                    src="{{products.thirdimage.url}}" alt="">
+            </button>
+            <br>
+        </div>
+    </div>
+
+    <div class="text-col">
+        <h3>
+            {{products.product_name|title}}
+
+
+        </h3>
+        <span>
+            <i class="far fa-eye"></i> : {{products.views}}
+            <div class="review-star">
+                <br>
+                <span>
+                    {% if rate == 1 %}
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star-o" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+                    {% elif rate == 2 %}
+
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+                    {% elif rate == 3 %}
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+                    {% elif rate == 4 %}
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+                    {% elif rate == 5 %}
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star" id="fourth"></i>
+                    <i class="fa fa-star" id="fifth"></i>
+                    {% else %}
+                    <i class=" fa fa-star-o" id="first"></i>
+                    <i class="fa fa-star-o" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% endif %}
+
+
+
+                    <br>
+                    <br>
+
+                    {{rate}}.0 Stars
+                    <br>
+
+                    {% if totalreview == 1 %}
+                    {{totalreview}} Review
+                    {% else %}
+                    {{totalreview}} Reviews
+                    {% endif %}
+
+
+
+
+                </span>
+            </div>
+
+        </span>
+
+        {% if products.product_name.remainingquantity == 0 %}
+
+        Out of stock
+
+        {% else %}
+
+        {% if order.quantity == 0%}
+        <div class="inner-text-col">
+
+            <br>
+
+            <h3>
+                Rs. {{products.price}}
+
+            </h3>
+            <br>
+            <span>
+                Select quantity
+                <br>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="number" class="quantity" editable="False" name="quantity" value="1" min="1"
+                        max="{{allowed}}" id="input-quantity">
+                    <input data-product={{products.productid}} type="submit" data-action="add" name="" id="submit-btn"
+                        value="Add To Cart">
+                </form>
+            </span>
+
+            <br>
+
+            <h4>
+                Product Description
+            </h4>
+            <br>
+
+            <div class="description">
+                <span id="details">{{products.description}}</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        {% elif order.quantity > 0 %}
+        <div class="inner-text-col">
+            <br>
+
+            <h3>
+                Rs. {{products.price}}
+
+            </h3>
+
+            <span>
+                <div class="info">
+                    This product has been added to your cart successfully
+                    <br>
+
+                </div>
+                <br>
+                <div class="cart-div">
+                    <a href="{%url 'cart'%}" style="color: black;">Cart Page</a>
+                </div>
+            </span>
+            <br>
+
+            <h4>
+                Product Description
+            </h4>
+            <br>
+
+            <div class="description">
+
+                <span id="details">{{products.description}}</span>
+            </div>
+        </div>
+        {% else %}
+        <div class="inner-text-col">
+            <br>
+
+            <h3>
+                Rs. {{products.price}}
+
+            </h3>
+            <br>
+            <span>
+                Select quantity
+                <br>
+
+
+
+
+                <form method="POST" id="productquantity">
+                    {% csrf_token %}
+                    <input type="number" class="quantity" editable="False" name="quantity" value="1" min="1"
+                        max="{{allowed}}" id="input-quantity">
+
+                    <input type="hidden" name="form-1" value="form-1">
+
+
+                    {% if request.user.is.authenctcated %}
+
+
+
+                    <input data-product={{products.productid}} class="update-cart" type="submit"
+                        data-action="addquantity" name="" id="submit-btn" value="Add To Cart">
+                    {% else %}
+                    <button data-product={{products.productid}} class="update-cart" data-action="addquantity" name=""
+                        id="submit-btn" type="button" value="Add To Cart"> Add To Cart</button>
+                    {% endif %}
+                </form>
+
+
+
+
+
+            </span>
+            <br>
+
+
+            <h4>
+                Product Description
+            </h4>
+            <br>
+
+            <div class="description">
+                <span id="details">{{products.description}}</span>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% endif %}
+
+
+
+
+
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="above-buffer">
+        <h3>You May Also Like</h3>
+        <div class="grid-container">
+            {% for products in randomproducts  %}
+            <div class="grid">
+                <a href="/productdescription/{{products.productid}}"> <img src="/static/images/{{products.firstimage}}"
+                        loading="lazy" alt=""></a>
+                <br>
+                <span>{{products.product_name|title}}</span>
+                <br>
+                <span style="font-weight: bolder;">Rs.{{products.price}}</span>
+                <br>
+                <br>
+
+                <div class="link-div">
+                    <a href="/productdescription/{{products.productid}}" id=all-link>View Details</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="buffer-container" id="review">
+        <div class="buffer">
+            <h3 id="review-h3">
+                {% if totalreview == 1 %}
+                {{totalreview}} Customer Review
+                {% else %}
+                {{totalreview}} Customer Reviews
+                {% endif %}
+            </h3>
+
+            <div class="display-reviews">
+
+                {% for review in reviews  %}
+                <div class="review-content">
+                    <span id="name-time">
+                        Posted {{review.Date|timesince}} ago
+                    </span>
+
+                    <br>
+                    <span id="name-time"> By {{review.Name}}</span>
+                    <br>
+                    {{review.Rating}}
+
+                    <div class="text">
+
+                        {{review.Text}}
+                    </div>
+
+
+
+                    <div class="review-star">
+                        <br>
+                        <span>
+                            {% if review.Rating == 1 %}
+                            <i class=" fa fa-star" id="first"></i>
+                            <i class="fa fa-star-o" id="second"></i>
+                            <i class="fa fa-star-o" id="third"></i>
+                            <i class="fa fa-star-o" id="fourth"></i>
+                            <i class="fa fa-star-o" id="fifth"></i>
+                            {% elif review.Rating == 2 %}
+                            <i class=" fa fa-star" id="first"></i>
+                            <i class="fa fa-star" id="second"></i>
+                            <i class="fa fa-star-o" id="third"></i>
+                            <i class="fa fa-star-o" id="fourth"></i>
+                            <i class="fa fa-star-o" id="fifth"></i>
+                            {% elif review.Rating == 3 %}
+                            <i class=" fa fa-star" id="first"></i>
+                            <i class="fa fa-star" id="second"></i>
+                            <i class="fa fa-star" id="third"></i>
+                            <i class="fa fa-star-o" id="fourth"></i>
+                            <i class="fa fa-star-o" id="fifth"></i>
+                            {% elif review.Rating == 4 %}
+                            <i class=" fa fa-star" id="first"></i>
+                            <i class="fa fa-star" id="second"></i>
+                            <i class="fa fa-star" id="third"></i>
+                            <i class="fa fa-star" id="fourth"></i>
+                            <i class="fa fa-star-o" id="fifth"></i>
+                            {% elif review.Rating == 5 %}
+                            <i class=" fa fa-star" id="first"></i>
+                            <i class="fa fa-star" id="second"></i>
+                            <i class="fa fa-star" id="third"></i>
+                            <i class="fa fa-star" id="fourth"></i>
+                            <i class="fa fa-star" id="fifth"></i>
+                            {% else %}
+                            <i class=" fa fa-star-o" id="first"></i>
+                            <i class="fa fa-star-o" id="second"></i>
+                            <i class="fa fa-star-o" id="third"></i>
+                            <i class="fa fa-star-o" id="fourth"></i>
+                            <i class="fa fa-star-o" id="fifth"></i>
+
+                            {% endif %}
+                        </span>
+                        <div class="underline-review">
+
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+
+                    <!--- {% if review.Image1 or review.Image2 %}
+                <img src=" {{review.Image1.url}}" alt="">
+                <img src="{{review.Image2.url}}" alt="">
+
+                {% endif %}
+               -->
+
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="right">
+            <button class="submit" id="submit-review">Write A Review</button>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+
+    {% if used == 1 %}
+    <script>
+        swal("",
+            "This Email Address : {{Email}} has already been used before. ",
+            "error");
+    </script>
+    {% endif %}
+
+    {% for message in messages %}
+    <script>
+        swal("",
+            "Your review has been successfully submitted",
+            "success");
+    </script>
+    {% endfor %}
+
+
+
+
+    <div class="inner-form" id="enter-review" style="margin-top:5%">
+        <h3 id="review-h3">
+            Write Your Review
+        </h3>
+
+        <br>
+
+        <form method="POST" enctype="multipart/form-data" onsubmit="submitfunction()">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <label id=form-label>Email</label>
+            <br>
+            <input type="email" name="Email" id="" placeholder="Enter Your Email" value="{{user.email}}" required
+                readonly>
+            <div class=" underline">
+            </div>
+            <label id=form-label class="required">Name</label>
+            <br>
+            <input type="text" name="Name" id="" placeholder="Enter Your Name" required
+                value="{{user.first_name}} {{user.last_name}}" readonly>
+
+            {% else %}
+            <label id=form-label>Email</label>
+            <br>
+            <input type="email" name="Email" id="" placeholder="Enter Your Email" required>
+            <div class=" underline">
+            </div>
+            <label id=form-label class="required">Name</label>
+            <br>
+            <input type="text" name="Name" id="" placeholder="Enter Your Name" required>
+
+            {% endif %}
+
+
+
+            <div class="underline"></div>
+
+            <label id=form-label>Text</label>
+            <br>
+            <textarea name="Text" id="" placeholder="Description About Product" required maxlength="400"></textarea>
+            <div class="underline"></div>
+            <label id=form-label>Images</label>
+            <br>
+
+
+            <input type="file" name="Image1" id="">
+            <input type="file" name="Image2" id="">
+
+
+
+            <div class="underline"></div>
+            <span id="display-span" style="font-family: monospace; color:red; margin-left:30px;">Please
+                fill
+                the
+                rating stars
+                to
+                submit.</span>
+
+            <br>
+            <span>
+                <div class="star-widget">
+                    <input type="radio" name="rate5" id="rate-5">
+                    <label for="rate-5" id="label" title="Very Good" class=" fa fa-star"></label>
+                    <input type="radio" name="rate4" id="rate-4">
+                    <label for="rate-4" id="label" title="Good" class="fa fa-star"></label>
+                    <input type="radio" name="rate3" id="rate-3">
+                    <label for="rate-3" id="label" title="Average" class="fa fa-star"></label>
+                    <input type="radio" name="rate2" id="rate-2">
+                    <label for="rate-2" id="label" title="Bad" class="fa fa-star"></label>
+                    <input type="radio" name="rate1" id="rate-1">
+                    <label for="rate-1" id="label" title="Very Bad" class="fa fa-star"></label>
+                </div>
+            </span>
+            <br>
+            <input type="hidden" name="form_type" value="FormTwo">
+
+
+            <br>
+
+            <button type="submit" id="submit" onclick="return submittt()">Submit</button>
+            <br>
+            <br>
+
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+
+
+
+</body>
+
+
+<script>
+
+    var enterreview = document.getElementById("enter-review")
+    var review = document.getElementById("review")
+    var btn = document.getElementById("submit-review")
+    btn.addEventListener("click", newfunction);
+    enterreview.style.display = "none"
+
+
+
+    function newfunction() {
+        enterreview.style.display = "block"
+        review.style.display = "none"
+    }
+
+    function submitfunction() {
+        enterreview.style.display = "none"
+        review.style.display = "block"
+
+
+
+    }
+
+</script>
+
+<script>
+    document.getElementById("display-span").style.display = "none";
+    document.getElementById("rate-5");
+    document.getElementById("rate-4");
+    document.getElementById("rate-3");
+    document.getElementById("rate-2");
+    document.getElementById("rate-1");
+
+
+
+
+    function submittt() {
+
+
+        if (document.getElementById("rate-5").checked == true) {
+
+            document.getElementById("rate-5").value = 5
+
+
+
+
+        } else if (document.getElementById("rate-4").checked == true) {
+            document.getElementById("rate-4").value = 4
+
+
+
+
+        } else if (document.getElementById("rate-3").checked == true) {
+            document.getElementById("rate-3").value = 3
+
+
+        } else if (document.getElementById("rate-2").checked == true) {
+            document.getElementById("rate-2").value = 2
+
+
+
+        } else if (document.getElementById("rate-1").checked == true) {
+            document.getElementById("rate-1").value = 1
+
+
+
+
+        } else {
+
+            document.getElementById("display-span").style.display = "block";
+            return false
+        }
+
+
+    }
+
+
+
+
+
+
+    var maxi = "{{allowed}}"
+    var quantityform = document.getElementById("productquantity")
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</html>
+{% endfor %}
+{% endblock %}
+{% include 'footer.html' %}

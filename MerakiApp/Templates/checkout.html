@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="icon" href="/static/MerakiApp/images/Meraki Website Icon.png">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/checkout.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+
+</head>
+
+
+<body>
+
+    <div class="logo-text" id="first">
+        <a href="{% url 'home' %}" id="logo-text"> Meraki Cosmetics</a>
+        <a href="{% url 'cart' %}" id="cart-link">Back To Cart</a>
+
+    </div>
+
+    <div class="container" id="container">
+        <div class="left-container" id="left-container">
+            <div class="total">
+                <span> {{order.get_cart_items}} items</span>
+                <br>
+                <span>Total : Rs. {{order.get_cart_total_with_shipping}} </span>
+                <br>
+                <span style="font-size: 12px;"> Rs.100 Standard Delivery Charge Included</span>
+            </div>
+
+            {% for order in orderitems  %}
+
+            {% if not order.remainingquantity == 0  %}
+
+
+
+
+
+            <div class="cart-items">
+                <img src="{{order.product.firstimage.url}}" alt="">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>
+                            Size
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{order.product.product_name}}
+
+                        </td>
+
+                        <td>
+                            {{order.product.product_name.size}}
+                        </td>
+                        <td>
+                            Rs. {{order.product.price}}
+                        </td>
+                        <td>
+                            {{order.quantity}}
+
+
+
+                        </td>
+
+                        <td>
+                            Rs. {{order.get_total}}
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+
+
+
+
+
+        <div class="right-container" id="right-container">
+            <h3 id="right-container-h3">Shipping Details</h3>
+            {% if request.user.is_authenticated %}
+            {% if ship %}
+            <div class="shipping" id="right-container">
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" required placeholder="Enter Your Address"
+                        value="{{ship.address}}">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" required placeholder="Enter Your City" value="{{ship.city}}">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" id="" required placeholder="Enter Your Contact Number"
+                        value="{{ship.contactnumber}}" min="0000000000" max="9999999999">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" id="" placeholder="Enter Any Alternate Number"
+                        value="{{ship.alternatenumber}}" min="0000000000" max="9999999999" required>
+                    <div class="underline"></div>
+                    <button type="submit" id="submit">Submit And View Payment
+                        Options</button>
+                </form>
+            </div>
+
+            {% elif alladdress %}
+            {% for address in alladdress  %}
+
+
+            <div class="shipping" id="right-container">
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" required placeholder="Enter Your Address"
+                        value="{{address.address}}">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" required placeholder="Enter Your City"
+                        value="{{address.city}}">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" id="" required placeholder="Enter Your Contact Number"
+                        value="{{address.contactnumber}}" min="0000000000" max="9999999999">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" id="" placeholder="Enter Any Alternate Number"
+                        value="{{address.alternatenumber}}" min="0000000000" max="9999999999" required>
+                    <div class="underline"></div>
+                    <button type="submit" id="submit">Submit And View Payment
+                        Options</button>
+                </form>
+            </div>
+            {% endfor %}
+            {% else %}
+
+            <div class="shipping">
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" required placeholder="Enter Your Address">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" required placeholder="Enter Your City">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" min="0000000000" max="9999999999" id="" required
+                        placeholder="Enter Your Contact Number">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" min="0000000000" max="9999999999" id=""
+                        placeholder="Enter Any Alternate Number" required>
+                    <div class="underline"></div>
+                    <button type="submit" id="submit">Submit And View Payment
+                        Options</button>
+                </form>
+            </div>
+
+            {% endif %}
+
+
+
+            {% else %}
+            <div class="shipping">
+                <form method="POST" id="guestform">
+                    {% csrf_token %}
+                    <label>Full Name</label>
+                    <br>
+                    <input type="text" name="fullname" value="{{ship.fullname}}" placeholder="Enter Your Full Name"
+                        required>
+                    <div class=" underline">
+                    </div>
+                    <label>Email</label>
+                    <br>
+                    <input type="email" name="email" id="" value="{{ship.email}}" required
+                        placeholder=" Enter Your Email">
+                    <div class="underline"></div>
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" value="{{ship.address}}" required
+                        placeholder="Enter Your Address">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" value="{{ship.city}}" required placeholder="Enter Your City">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" min="0000000000" value="{{ship.contactnumber}}"
+                        max="9999999999" id="" required placeholder="Enter Your Contact Number">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" min="0000000000" value="{{ship.alternatenumber}}"
+                        max="9999999999" id="" placeholder="Enter Any Alternate Number" required>
+                    <div class="underline"></div>
+                    <button type="submit" id="submit">Submit And View Payment
+                        Options</button>
+                </form>
+            </div>
+
+
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var user = '{{request.user}}'
+        var total = '{{order.get_cart_total_with_shipping|floatformat:2}}'
+        var form = document.getElementById("guestform")
+
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+        console.log("Logged In")
+
+        form.addEventListener("submit", function submitform() {
+            var CheckoutShippingFormData = {
+                'total': total,
+                'fullname': null,
+                'email': null,
+                'address': null,
+                'city': null,
+                'contactnumber': null,
+                'alternatenumber': null
+            }
+
+            if (user == "AnonymousUser") {
+                CheckoutShippingFormData.fullname = form.fullname.value
+                CheckoutShippingFormData.email = form.email.value
+                CheckoutShippingFormData.address = form.address.value
+                CheckoutShippingFormData.city = form.city.value
+                CheckoutShippingFormData.contactnumber = form.contactnumber.value
+                CheckoutShippingFormData.alternatenumber = form.alternatenumber.value
+            }
+
+            var url = '/shippinginfo'
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/JSON',
+                    'X-CSRFToken': csrftoken,
+
+                },
+                body: JSON.stringify({ 'form': CheckoutShippingFormData })
+
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+
+                    window.location.href = "{% url 'payment' %}"
+
+                })
+
+        })
+
+
+    </script>
+
+    <script>
+
+        var form = document.getElementById("guestform")
+
+        form.addEventListener("submit", function () {
+
+            var CheckoutShippingFormData = {
+                'total': total,
+                'fullname': null,
+                'email': null,
+                'address': null,
+                'city': null,
+                'contactnumber': null,
+                'alternatenumber': null
+            }
+
+            if (user == "AnonymousUser") {
+                CheckoutShippingFormData.fullname = form.fullname.value
+                CheckoutShippingFormData.email = form.email.value
+                CheckoutShippingFormData.address = form.address.value
+                CheckoutShippingFormData.city = form.city.value
+                CheckoutShippingFormData.contactnumber = form.contactnumber.value
+                CheckoutShippingFormData.alternatenumber = form.alternatenumber.value
+            }
+
+            function getCookie(name) {
+                var cookieArr = document.cookie.split(";");
+
+                for (var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i].split("=");
+                    if (name == cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+                return null;
+            }
+
+            var shippingdetails = JSON.parse(getCookie('shippingdetails'))
+            if (shippingdetails == undefined) {
+                shippingdetails = { 'Shippingdata': CheckoutShippingFormData }
+                document.cookie = 'shipping=' + JSON.stringify(shippingdetails) + ";domain=;path=/"
+            }
+
+
+
+
+        })
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

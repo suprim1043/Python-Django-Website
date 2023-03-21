@@ -1,0 +1,370 @@
+body{
+    overflow: scroll;
+
+    font-family: "Poppins",sans-serif !important;
+
+}
+
+::-webkit-scrollbar{
+display: none;
+}
+.buffer-div {
+    height: 150px;
+    width: 100%;
+    background-color: wheat;
+    text-align: center;
+
+
+    
+
+}
+
+a{
+    text-decoration: none !important;
+}
+
+
+.buffer-div h3 {
+    font-size: 2.5rem;
+    font-weight: 100;
+    padding-top: 25px;
+    margin-bottom: 0px;
+
+}
+
+.logotext{
+
+    margin-top: -11%;
+    padding-bottom: 20px;
+
+
+
+}
+
+.container{
+
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 100px;
+
+}
+
+
+
+
+#all-link{  
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    background-color: black;
+    padding: 4px 20px 4px 20px;
+    border: none;
+    transition: 0.4s;
+}
+#all-link:hover{
+    border: none;
+    background-color: wheat;
+    color: black;
+}
+ input {
+
+    width: 50%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top:80px;
+    outline: none;
+    background-color: transparent;
+    font-family: monospace !important;
+    font-size: 14px;
+    text-align: center;
+
+
+}
+
+.underline {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: black;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+#submit {
+
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 30%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    outline: none;
+    background-color: black;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+#submit-2 {
+
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 60%;
+    border-radius: 5px;
+    margin-top: -80px;
+    outline: none;
+    background-color: black;
+    text-align: center;
+    transition: 0.4s;
+
+}
+
+#submit-2:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+
+
+#detail-btn{
+    outline: none;
+    border: none;
+    background: none;
+    color: darkgreen;
+    width: 60%;
+    margin-left: 20%;
+
+
+}
+
+span{
+    font-weight: bolder;
+}
+
+.order-details{
+
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 20px;
+    margin-top: -290px;
+    position: relative;
+
+
+}
+
+#orderid{
+    font-size: 18px;
+}
+.order-total{
+
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    color: darkgreen;
+    font-size: 17px;
+}
+
+
+
+
+.card {
+    z-index: 0;
+    background-color: #ECEFF9;
+    padding-bottom: 20px;
+    margin-top: -250px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+
+}
+
+.top {
+    padding-top: 40px;
+    padding-left: 13% !important;
+    padding-right: 13% !important;
+   
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #455A64;
+    padding-left: 0px;
+    margin-top: 30px;
+    
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar .step0:before {
+    font-family: FontAwesome;
+    content: "\f10c";
+    color: #fff
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #C5CAE9;
+    border-radius: 50%;
+    margin: auto;
+    padding: 0px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 12px;
+    background: #C5CAD9;
+    position: absolute;
+    left: 0;
+    top: 16px;
+    z-index: -1
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    left: -50%
+}
+
+#progressbar li:nth-child(2):after,
+#progressbar li:nth-child(3):after {
+    left: -50%
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    left: 50%
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: green
+}
+
+#progressbar li.active:before {
+    content: "\f00c"
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.icon-content {
+    padding-bottom: 20px;
+
+}
+
+@media screen and (max-width: 992px) {
+    .icon-content {
+        width: 50%;
+        font-size: 16px;
+    }
+    .icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    }
+#submit-2 {
+    width: 80%;
+}
+.buffer-div h3 {
+    font-size: 2rem;
+
+
+}
+
+#all-link{
+    font-size: 14px;
+}
+.order-details{
+    margin-top: -300px;
+
+}
+
+}
+
+
+@media screen and (max-width: 500px) {
+      .icon {
+    width: 40px;
+    height: 40px;
+
+    }
+    .icon-content {
+        width: 50%;
+        font-size: 15px;
+    }
+    #inner-span{
+        font-size: 12px;
+    }
+    #inner-span-header{
+         font-size: 14px;
+    }
+
+
+}
+
+@media screen and (max-width: 400px) {
+    .icon-content {
+        width: 50%;
+        font-size: 12px;
+    }
+     .icon {
+    width: 40px;
+    height: 40px;
+
+    }
+    #inner-span{
+        font-size: 11px;
+    }
+    #inner-span-header{
+         font-size: 12px;
+    }
+
+}

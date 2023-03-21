@@ -1,0 +1,58 @@
+{% for items in data  %}
+{{items.Title}}
+{% endfor %}
+
+<br>
+<br>
+<br>
+<br>
+
+<form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    <label for="">First Image</label>
+    {{form.ImageFirst}}
+
+    <br>
+    <br>
+    <br>
+
+    {{form.errors}}
+
+    <br>
+    <label for="">Second Image</label>
+    {{form.ImageSecond}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="">Title</label>
+    {{form.Title}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="">Description</label>
+    {{form.Description}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="">Link</label>
+    {{form.LinkName}}
+    <br>
+    <br>
+    <br>
+    <label for="">Page</label>
+    {{form.Page}}
+    <br>
+    <br>
+    <br>
+    <label for="">Link Content</label>
+    {{form.Link_Content}}
+    <br>
+    <br>
+    <br>
+
+    <input type="submit" name="" id="">
+</form>

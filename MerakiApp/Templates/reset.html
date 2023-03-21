@@ -1,0 +1,81 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/reset.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Reset</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+
+        <div class="signup-container">
+            <div class="logo-text">
+                <a href="{% url 'home' %}" id="logo-text"> Meraki Cosmetics</a>
+
+            </div>
+
+            <span>
+                Enter your email address below, and we’ll email instructions for setting up a
+                new password.
+            </span>
+            <div class="sign-up">
+
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+
+                    <label>Email</label>
+                    <br>
+                    {{form.email}}
+
+                    <br>
+
+                    <div class=" underline">
+                    </div>
+                    <br>
+
+
+                    <button type="submit" id="submit">Submit</button>
+                    <br>
+
+
+                </form>
+            </div>
+
+            <div class="image-container">
+
+
+
+
+                <div class="image-text" id="img-text">
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var fields = document.getElementsByTagName('input')
+    fields[1].placeholder = 'Enter Your Email'
+</script>
+{% endblock %}

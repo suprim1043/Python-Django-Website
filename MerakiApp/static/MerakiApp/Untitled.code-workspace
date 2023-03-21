@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "MerakiWebsite",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

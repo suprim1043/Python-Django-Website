@@ -1,0 +1,573 @@
+{% include 'newnav.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height" />
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/main.css' %}">
+    <link rel="stylesheet" href="{% static 'MerakiApp/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'MerakiApp/newnav.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <style>
+        .swal-text {
+            color: black;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #swal-span {
+            color: white;
+            border: 1px solid black;
+            background-color: black;
+            padding: 5px 20px 5px 20px;
+            transition: 0.4s;
+            font-size: 14px;
+            position: absolute;
+            top: 84%;
+            left: 5%;
+            margin-right: 5%;
+
+        }
+
+        #swal-span:hover {
+
+            color: black;
+            background-color: white;
+
+        }
+
+        .swal-button {
+            padding: 5px 45px 5px 45px;
+            font-family: "Poppins", sans-serif;
+            border-radius: 0px;
+            color: white;
+            background-color: black;
+            margin-top: 0%;
+            transition: 0.4s;
+            font-size: 14px;
+            top: 10%;
+            border: 1px solid black !important;
+
+
+        }
+
+        .swal-button:hover {
+
+            background-color: white !important;
+            border: 1px solid black;
+            color: black;
+
+
+
+        }
+    </style>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+  
+
+    <div class="second-div">
+     
+
+
+
+
+
+        <div class="second-container">
+        
+            <div class="grid-container-second">
+                {% for data in bestsellers %}
+                <div class="second-grid-container">
+
+                    {% if data.product.product_name.remainingquantity == 0 %}
+                    <div class="outofstocklabel">
+                        Out of Stock
+                    </div>
+
+                    {% else %}
+
+
+                    <div class="outofstocklabel" style="opacity: 0; padding-bottom:1.5px;">
+                        Out of Stock
+                    </div>
+
+                    {% endif %}
+                    <img src="/static/images/{{data.product.firstimage}}" alt="">
+                    <br>
+                    <span>{{data.product.product_name|title}}</span>
+                    <br>
+                    <span>Rs.{{data.product.price}}</span>
+                    <br>
+
+                    {% if data.product.rate == 1 %}
+
+                    <i class="fa fa-star" id="first"></i>
+                    <i class="fa fa-star-o" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% elif data.product.rate == 2 %}
+
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% elif data.product.rate == 3 %}
+
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% elif data.product.rate == 4 %}
+
+                    <i class="fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% elif data.product.rate == 5 %}
+
+                    <i class=" fa fa-star" id="first"></i>
+                    <i class="fa fa-star" id="second"></i>
+                    <i class="fa fa-star" id="third"></i>
+                    <i class="fa fa-star" id="fourth"></i>
+                    <i class="fa fa-star" id="fifth"></i>
+                    {% else %}
+                    <i class=" fa fa-star-o" id="first"></i>
+                    <i class="fa fa-star-o" id="second"></i>
+                    <i class="fa fa-star-o" id="third"></i>
+                    <i class="fa fa-star-o" id="fourth"></i>
+                    <i class="fa fa-star-o" id="fifth"></i>
+
+                    {% endif %}
+
+                    <div class="link-div">
+                        {% if data.product.product_name.remainingquantity == 0 %}
+
+                        <input type="button" name="" id="submit-btn-out" value="Out Of Stock">
+                        <a href="/productdescription/{{data.product.productid}}" id=all-link>View Details</a>
+
+                        {% else %}
+
+                        <input type="button" data-product="{{data.product.productid}}" data-action="add"
+                            class="update-cart" name="" id="submit-btn" value="Add To Cart">
+                        <a href="/productdescription/{{data.product.productid}}" id=all-link>View Details</a>
+
+                        {% endif %}
+                    </div>
+
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="link-div-2">
+                <br>
+                <a href="{% url 'products'  %}" id=all-link>View All Products</a>
+            </div>
+
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+
+   
+
+
+
+
+
+
+</html>
+
+
+
+
+{% endblock %}
+{% include 'footer.html' %}
+
+<script>
+    var r1 = document.getElementById("r1")
+    var r2 = document.getElementById("r2")
+    var r3 = document.getElementById("r3")
+    var r4 = document.getElementById("r4")
+    var r5 = document.getElementById("r5")
+    var updatebtn = document.getElementsByClassName("update-cart")
+    var user = '{{request.user}}'
+
+    console.log('{{orderitems}}', 's')
+
+
+
+
+
+
+
+
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+
+    for (var i = 0; i < updatebtn.length; i++) {
+        updatebtn[i].addEventListener('click', function () {
+            var productid = this.dataset.product
+            var action = this.dataset.action
+            if (user === 'AnonymousUser') {
+                addCookieItem(productid, action)
+
+            }
+            else {
+
+                updateUserOrder(productid, action)
+
+            }
+        })
+    }
+
+
+
+
+
+
+
+
+    function addCookieItem(productid, action) {
+        if (action == "add") {
+            if (cart[productid] == undefined) {
+                cart[productid] = { 'quantity': 1 }
+                var carttotal = document.getElementById("cart-total").innerHTML
+
+                if (user == "AnonymousUser") {
+
+                    var updateTable = $.ajax({
+                        method: "GET",
+                        url: "products",
+                        success: function (response, textStatus) {
+                            var a = parseInt($('#cart-total', response).html()) + 1
+                            document.getElementById("cart-total").innerHTML = a
+
+                        }
+                    })
+                }
+                else {
+
+                    var updateTable = $.ajax({
+                        method: "GET",
+                        url: "products",
+                        success: function (response, textStatus) {
+                            var a = parseInt($('#cart-total', response).html())
+                            document.getElementById("cart-total").innerHTML = a
+
+                        }
+                    })
+                }
+
+
+                const el = document.createElement('div')
+                el.innerHTML = "<a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+                swal({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Item Added To Cart',
+                    buttons: "Close",
+                    content: el
+                })
+
+
+
+            }
+            else {
+
+
+                const el = document.createElement('div')
+                el.innerHTML = "<a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+                swal({
+                    icon: 'info',
+                    title: 'Info',
+                    text: 'This item is already added in your cart',
+                    buttons: "Close",
+                    content: el
+                })
+
+
+
+            }
+
+        }
+
+
+
+
+
+        if (action == "addquantity") {
+
+            if (cart[productid] == undefined) {
+                var quant = parseInt(quantityform.quantity.value)
+                if (quant <= maxi) {
+                    if (quant != 0) {
+                        cart[productid] = { 'quantity': quant }
+                        var updateTable = $.ajax({
+                            method: "GET",
+                            url: productid,
+                            success: function (response, textStatus) {
+                                var a = parseInt($('#cart-total', response).html()) + quant
+                                document.getElementById("cart-total").innerHTML = a
+
+                            }
+                        })
+                        const el = document.createElement('div')
+                        el.innerHTML = "<a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+                        swal({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Item Added To Cart',
+                            buttons: "Close",
+                            content: el
+                        })
+                    }
+                }
+                else {
+
+                    swal({
+                        icon: 'info',
+                        title: 'Info',
+                        text: ' A Maximum of ' + " " + maxi + " " + "Units Can Be Ordered At A Time ",
+                        buttons: "Close",
+
+                    })
+                }
+            }
+
+            else {
+                const el = document.createElement('div')
+                el.innerHTML = "<a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+                swal({
+                    icon: 'info',
+                    title: 'Info',
+                    text: 'This item is already added in your cart',
+                    buttons: "Close",
+                    content: el
+                })
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        if (action == "add-update") {
+            if (cart[productid]["quantity"] == maxi) {
+
+                swal({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Maxmium Allowed Quantity Reached',
+                    buttons: "Close",
+
+                })
+
+            }
+
+            else {
+
+                cart[productid]['quantity'] += 1
+                location.reload()
+
+            }
+
+        }
+
+
+
+        if (action == "addcart") {
+            if (cart[productid] == undefined) {
+                cart[productid] = { 'quantity': 1 }
+                location.reload()
+            }
+        }
+
+
+
+        if (action == "remove-update") {
+            cart[productid]['quantity'] -= 1
+
+
+            if (cart[productid]['quantity'] <= 0) {
+                console.log("remove item")
+                delete cart[productid]
+
+            }
+            location.reload()
+
+        }
+
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function updateUserOrder(productid, action) {
+
+        var url = '/updateitem'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({ 'productid': productid, 'action': action })
+        })
+
+            .then((response) => {
+                return response.json()
+            })
+
+
+            .then((data) => {
+                console.log('data:', data)
+                console.log(productid, action)
+                location.reload()
+
+            })
+
+    }
+
+
+
+
+
+
+
+    function getCookie(name) {
+        var cookieArr = document.cookie.split(";");
+
+        for (var i = 0; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split("=");
+            if (name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+
+
+
+    var cart = JSON.parse(getCookie('cart'))
+    var cc = document.cookie;
+
+
+
+
+
+
+    if (cart == undefined) {
+        cart = {}
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+    }
+
+
+
+
+
+
+
+
+
+    var idVar = setInterval(() => {
+        timer()
+    }, 300000);
+
+
+
+    function timer() {
+        if (r1.checked) {
+
+            r2.checked = "true"
+        } else if (r2.checked) {
+            r3.checked = "true"
+
+
+        }
+        else {
+            r1.checked = "true"
+        }
+    }
+
+
+</script>
+
+
+</html>

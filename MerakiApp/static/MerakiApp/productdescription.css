@@ -1,0 +1,604 @@
+body {
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    text-align: center;
+    height: 100vh;
+}
+
+
+.inner-form {
+
+    text-align: center;
+
+
+}
+
+.inner-form h3{
+
+     padding: 10px;
+    font-size: 1.3rem;
+    background-color: wheat;
+}
+
+.inner-form textarea {
+
+    width: 80%;
+
+    height: 90px;
+    border: none;
+    border-radius: 5px;
+    margin-top: -20px;
+    padding-top: 50px;
+    outline: none;
+    background-color: transparent;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+}
+
+.inner-form input {
+
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    outline: none;
+    background-color: transparent;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+
+
+}
+
+.underline {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: grey;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.sign-up {
+    margin-top: 30px;
+}
+
+#login-a {
+    text-decoration: none;
+    color: black;
+    font-family: monospace;
+    transition: 0.4s;
+
+
+}
+
+
+
+#login-a:hover {
+
+    padding-left: 8px;
+
+}
+
+
+#submit {
+
+    height: 38px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-top: 10px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+
+
+#form-label:hover {
+    color: black !important;
+}
+
+.star-widget input {
+    display: none;
+}
+
+
+.star-widget {
+
+    width: 58%;
+    margin-top: -15px;
+    margin-left: 35px;
+
+
+
+
+}
+
+
+.star-widget label {
+    font-size: 20px;
+    padding: 5px 20px 5px 20px;
+    float: right;
+    margin-left: -10px;
+    transition: all 0.2s ease;
+
+
+}
+
+
+
+input:not(:checked)~label:hover,
+input:not(:checked)~#label:hover~#label {
+    color: rgb(233, 208, 21);
+
+}
+
+
+input:checked~label {
+
+    color: rgb(233, 208, 21);
+    text-shadow: 0 0 20px #952;
+
+}
+
+
+
+input#rate-5,
+:checked~#label {
+    color:rgb(233, 208, 21);
+    text-shadow: 0 0 30px rgb(221, 143, 84);
+}
+
+
+
+
+.img-col {
+    margin-top: 3%;
+    width: 32%;
+    height: 600px;
+    margin-left: 15%;
+    padding-bottom: 50px;
+}
+
+#image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.image-btn {
+
+    width: 12%;
+    margin-top: -600px;
+    margin-left: 2%;
+    display: block;
+
+
+}
+
+#btn {
+
+    width: 70%;
+    margin: 5%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    margin-bottom: 10%;
+    background-color: transparent;
+
+}
+
+
+
+
+#btn:hover {
+    transform: scale(1.02);
+}
+
+
+#btn img {
+    width: 100%;
+}
+
+.text-col {
+
+    width: 49%;
+    margin-left: 50%;
+    height: 600px;
+    margin-top: -789px;
+    text-align: center;
+
+
+}
+
+.text-col h3 {
+
+    font-size: 3rem;
+
+}
+
+
+.inner-text-col {
+    width: 100%;
+    text-align: left;
+
+}
+
+
+.inner-text-col span {
+    margin-left: 5%;
+    font-size: 16px;
+
+
+}
+
+.inner-text-col h3 {
+    margin-left: 5%;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.buffer-right {
+    border: 1px solid black;
+    width: 43%;
+    margin-left: 55%;
+    margin-top: -45.5%;
+    height: 80vh;
+}
+
+
+.inner-text-col h4 {
+    margin-left: 5%;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin-bottom: -1.5%;
+}
+
+#testcheck:checked {
+    content: "\f00c";
+}
+
+#first:hover {
+    content: "\f00c";
+}
+
+
+.buffer {
+    height: 80vh;
+    width: 70%;
+   height: 75vh;
+   overflow: scroll;
+   scroll-behavior: scroll;
+   background-color: white;
+
+
+
+}
+
+.buffer-container{
+    background-color: white;
+    display: flex;
+    margin-top: 10%;
+}
+
+.buffer h3 {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3rem;
+    background-color: wheat;
+}
+
+
+
+#input-quantity {
+
+    border: none;
+    background-color: #efca86;
+    outline: none;
+    width: 20%;
+    font-weight: bolder;
+    font-size: 17px;
+    padding: 5.4px 20px 7px 20px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    margin-top: 17px;
+    margin-left: 5%;
+
+
+}
+
+.inner-text-col input {
+    margin-left: 5%;
+}
+
+.info{
+    width: 95%;
+    border: 1px solid black;
+    margin-left: 5%;
+    text-align: center;
+    background-color: black;
+    font-family: monospace;
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+.cart-div{
+    width: 95%;
+    margin-top: -3%;
+    background-color:white !important;
+    text-align: center;
+    background: none;
+    margin-left: 5%;
+    padding: 10px;
+
+}
+.cart-div a{
+    padding: 8px 100px 8px  100px;
+    width: 100%;
+    margin-left: -1.8%;
+    background-color: wheat;
+    transition: 0.4s;
+    font-family: monospace;
+}
+.cart-div a:hover{
+    background-color: black;
+    color: white !important;
+}
+#submit-btn {
+
+    height: 38px;
+    padding: 10px 20px 10px 20px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    margin-left: 2px;
+    width: 30%;
+    outline: none;
+    background-color: black;
+    text-align: center;
+    transition: 0.4s;
+}
+
+
+
+#second:hover::before~#first {
+    content: "\f005";
+
+}
+
+.review-star {
+
+    left: 5%;
+
+
+
+
+}
+
+#first,
+#second,
+#third,
+#fourth,
+#fifth {
+
+
+    padding: 8px;
+    padding-right: 10px;
+    margin: -0.6%;
+    width: 7%;
+    transition: 0.2s;
+
+}
+
+
+
+#details {
+
+    margin-left: 0%;
+    font-size: 14px;
+    font-weight: 200;
+
+}
+
+.description {
+    width: 85%;
+    margin-left: 5%;
+
+
+}
+
+#submit-btn:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+.above-buffer {
+    width: 100%;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.above-buffer h3{
+    padding: 10px;
+    font-size: 1.3rem;
+    background-color:black;
+    color: white;
+}
+
+.above-buffer img {
+    width: 65%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.grid-container {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid {
+    margin: 20px;
+}
+
+#all-link {
+
+    margin: 5px;
+    color: white;
+    background-color: black;
+    padding: 5px 40px 5px 40px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    border-radius: 2px;
+    transition: 0.4s;
+    font-weight: bold;
+
+}
+
+#all-link:hover {
+
+    color: black;
+    background-color: wheat;
+    border: none;
+
+
+}
+
+#product-link {
+    color: black;
+    padding: 5px 20px 5px 20px;
+
+}
+
+
+.display-reviews{
+
+    width: 100%;
+    text-align: center;
+    margin-top: 0%;
+
+
+ 
+}
+
+
+.display-reviews img{
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+}
+
+.review-content{
+
+width: 100%;
+text-align: center;
+background-color: white;
+margin-top: 2%;
+
+
+}
+
+
+
+.right{
+    text-align: center;
+    width: 30%;
+    background-color: black;
+
+}
+.right button{
+    margin-top: 60% !important;
+}
+.underline-review{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: black;
+    height: 1px;
+    margin-top: 5%;
+
+}
+
+.submit{
+    font-size: 16px;
+}
+
+
+#submit-review {
+
+    height: 38px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-top: 10px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit-review:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+
+.text{
+
+    height:80px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#review-h3{
+    background-color: black;
+    color: white;
+    
+}

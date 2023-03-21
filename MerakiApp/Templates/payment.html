@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    {% load static %}
+    <link rel="icon" href="/static/MerakiApp/images/Meraki Website Icon.png">
+    <link rel="stylesheet" href="{% static 'MerakiApp/payment.css'  %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+
+
+</head>
+
+
+<body>
+    <div class="logo-text" id="first">
+        <a href="{% url 'home' %}" id="logo-text">Meraki Cosmetics</a>
+    </div>
+    <br>
+    <div class="container">
+
+        <div class="right-container" id="right-container">
+            <h3 id="right-container-h3"> Edit Shipping Details</h3>
+            <br>
+
+            <div class="shipping" id="right-container">
+                <form method="POST" id="form">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="form-1" value="form-1">
+
+                    {% if request.user.is_authenticated %}
+
+
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" required placeholder="Enter Your Address"
+                        value="{{ship.address}}">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" required placeholder="Enter Your City" value="{{ship.city}}">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" id="" required placeholder="Enter Your Contact Number"
+                        value="{{ship.contactnumber}}" min="0000000000" max="9999999999">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" id="" placeholder="Enter Any Alternate Number"
+                        value="{{ship.alternatenumber}}" min="0000000000" max="9999999999" required>
+                    <div class="underline"></div>
+
+                    {% else %}
+
+                    <input type="text" name="fullname" value="{{shipp.fullname}}" hidden>
+                    <input type="text" name="email" value="{{shipp.email}}" hidden>
+
+                    <label>Address</label>
+                    <br>
+                    <input type="text" name="address" id="" required placeholder="Enter Your Address"
+                        value="{{shipp.address}}">
+                    <div class="underline"></div>
+
+                    <label>City</label>
+                    <br>
+                    <input type="text" name="city" id="" required placeholder="Enter Your City" value="{{shipp.city}}">
+                    <div class="underline"></div>
+                    <label>Contact Number</label>
+                    <br>
+                    <input type="number" name="contactnumber" id="" required placeholder="Enter Your Contact Number"
+                        value="{{shipp.contactnumber}}" min="0000000000" max="9999999999">
+                    <div class="underline"></div>
+                    <label>Alternate Number</label>
+                    <br>
+                    <input type="number" name="alternatenumber" id="" placeholder="Enter Any Alternate Number"
+                        value="{{shipp.alternatenumber}}" min="0000000000" max="9999999999" required>
+                    <div class="underline"></div>
+
+                    {% endif %}
+                    <button type="submit" id="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="shipping-form" id="shipping-info">
+            <div id="shipping-info-inner">
+
+                {% if request.user.is_authenticated %}
+                {{ship.customer.first_name}} {{ship.customer.last_name}}
+                {{ship.address}}
+                <br>
+                {{ship.city}}
+                <br>
+                {{ship.contactnumber}} ,
+                {{ship.alternatenumber}}
+                <br>
+                <br>
+                <br>
+                {% else %}
+                {{shipp.fullname}}
+                <br>
+                {{shipp.address}}
+                <br>
+                {{shipp.city}}
+                <br>
+                {{shipp.contactnumber}} ,
+                {{shipp.alternatenumber}}
+                <br>
+                <br>
+                {% endif %}
+
+
+
+                <button id="edit-link" onclick="viewform()">Edit Shipping Information</button><br>
+                <br>
+            </div>
+            <div class="underline" id="underline"></div>
+
+            <div id="special">
+
+                <span style="font-weight: bolder;">Special Instructions</span>
+
+                <br>
+                <br>
+
+                {% if order.specialinstructions %}
+                <span style="font-size: 15px;"> {{order.specialinstructions}}</span>
+
+                {% else %}
+                <span id="specialinstruction"> N/A </span>
+                <br>
+                <br>
+                <button id="edit-link-link" onclick="viewinstructionform();">Add Special
+                    Instructions</button>
+                {% endif %}
+
+
+
+            </div>
+            <br>
+            <div class="underline" id="underline-2"></div>
+            <div id="instruction-form">
+                <form method="POST" id="specialform">
+                    {% csrf_token %}
+                    <br>
+                    <input type="hidden" name="form-2" value="form-2">
+                    <input type="text" id="" required placeholder="Special Instructions" name="specialinstructions"
+                        maxlength="200">
+                    <div class="underline"></div>
+                    <button id="edit-link" type="submit">Submit</button>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+            </div>
+
+        </div>
+
+        <div class=" payment-method" id="payment-method">
+            <h3 id="payment-h3">
+                Payment Methods
+            </h3>
+            <form method="POST" id="paymentform">
+                {% csrf_token %}
+                <input type="hidden" name="form-3" value="form-3">
+                <div class="radio-buttons">
+                    <label class="custom-radio">
+                        <input type="radio" name="radio" id="COD" value="COD" checked />
+                        <span class="radio-btn">
+                            <div class="hobbies-icon">
+
+                                <i id="biking" class=" las la-biking"></i>
+                                <h3 id="COD-H3">Cash On Delivery</h3>
+                                <span id="COD-SPAN" style="font-size: 14px;">For Customers Within Valley Only</span>
+                            </div>
+
+                        </span>
+
+                    </label>
+                    <input name="ESEWA" hidden value="ESEWA" id="">
+
+                    <label class="custom-radio">
+
+
+
+
+
+                        <input type="radio" name="radio" id="ESEWA" value="ESEWA" />
+
+
+
+                        <span class="radio-btn">
+                            <div class="hobbies-icon esewa">
+                                <img src="/static/MerakiApp/ese.jpeg" id="ESEWA-LOGO" />
+                                <h3 id="ESEWA-H3">Esewa</h3>
+                                <br>
+                                <span id="ESEWA-SPAN" style="font-size:14px;">
+                                    Details Will Be Provided During Conformation.
+                                </span>
+
+                            </div>
+
+                        </span>
+                    </label>
+                    <label class="custom-radio">
+                        {% if orderpaymentmethod.paymentmethod == "FONEPAY" %}
+                        <input type="radio" name="radio" value="FONEPAY" checked />
+                        <input type="text" name="FONEPAY" value="FONEPAY" hidden id="">
+                        {% else %}
+                        <input type="radio" name="radio" value="FONEPAY" disabled />
+                        <input type="text" name="FONEPAY" value="FONEPAY" hidden id="">
+                        {% endif %}
+                        <span class="radio-btn">
+                            <div class="hobbies-icon">
+                                <img src="/static/MerakiApp/fonepay.png" id="FONEPAY" />
+                                <h3>Coming Soon</h3>
+                            </div>
+                        </span>
+                    </label>
+                    <br>
+                    <br>
+                    <button type="submit" id="submit">Place Order</button>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+<script>
+
+
+    var rightcontainer = document.getElementById("right-container")
+    var shippinginfo = document.getElementById("shipping-info")
+    var instructionform = document.getElementById("instruction-form")
+    var special = document.getElementById("special")
+    var instructionviewbtn = document.getElementById("edit-link-link")
+    var editlink = document.getElementById("edit-link")
+    var paymentmethod = document.getElementById("payment-method")
+    var shippinginner = document.getElementById("shipping-info-inner")
+    var underline = document.getElementById("underline")
+    var underline2 = document.getElementById("underline-2")
+    var COD = document.getElementById("COD")
+    var biking = document.getElementById("biking")
+    var esewalogo = document.getElementById("ESEWA-LOGO")
+    var CODH3 = document.getElementById("COD-H3")
+    var CODSPAN = document.getElementById("COD-SPAN")
+    var ESEWAH3 = document.getElementById("ESEWA-H3")
+    var ESEWA = document.getElementById("ESEWA")
+
+
+
+
+    var ESEWASPAN = document.getElementById("ESEWA-SPAN")
+    var user = '{{request.user}}'
+    var total = '{{shipp.total}}'
+    var cookieinstruction = '{{specialinstruction.specialinstruction}}'
+
+
+    ESEWASPAN.style.display = "none";
+    CODSPAN.style.display = "none";
+
+
+    var idspecial = document.getElementById("specialinstruction").innerHTML
+    if (user == "AnonymousUser") {
+        if (cookieinstruction) {
+            document.getElementById("specialinstruction").innerHTML = cookieinstruction;
+
+        }
+    }
+    else {
+        console.log("looggedout")
+    }
+
+
+
+
+
+    ESEWA.addEventListener("click", function ESEWA() {
+
+        biking.style.marginTop = "0px";
+        CODH3.style.display = "block";
+        CODSPAN.style.display = "none";
+        CODH3.style.display = "block";
+        biking.style.transition = "0.4s";
+        CODSPAN.style.transition = "0.4s";
+
+        esewalogo.style.opacity = "0";
+        esewalogo.style.position = "absolute";
+        esewalogo.style.top = "-100%";
+        ESEWAH3.style.transition = "0.4s";
+        ESEWAH3.style.marginTop = "-40px";
+
+        ESEWAH3.style.marginTop = "0px";
+        ESEWASPAN.style.display = "block";
+
+
+
+    })
+
+    COD.addEventListener("click", function COD() {
+        biking.style.transition = "0.4s";
+        biking.style.marginTop = "-40px";
+        CODH3.style.display = "none";
+        CODH3.style.transition = "0.4s";
+        CODSPAN.style.display = "block";
+        CODSPAN.style.transition = "0.4s";
+        esewalogo.style.opacity = "1";
+        esewalogo.style.position = "relative";
+        esewalogo.style.top = "0%";
+        ESEWASPAN.style.display = "none";
+
+
+
+
+    })
+
+
+
+    function viewform() {
+        shippinginfo.style.display = "none";
+        paymentmethod.style.display = "none"
+        rightcontainer.style.display = "block";
+
+    }
+    function viewinstructionform() {
+
+        shippinginner.style.display = "none";
+        rightcontainer.style.display = "none";
+        paymentmethod.style.display = "none"
+        instructionform.style.display = "block";
+        special.style.display = "none";
+        underline.style.display = "none";
+        underline2.style.display = "none";
+
+
+
+    }
+
+
+
+
+</script>
+
+<script>
+
+    var form = document.getElementById("form")
+
+    form.addEventListener("submit", function () {
+
+        var CheckoutShippingFormData = {
+            'total': total,
+            'fullname': null,
+            'email': null,
+            'address': null,
+            'city': null,
+            'contactnumber': null,
+            'alternatenumber': null
+
+
+        }
+
+        if (user == "AnonymousUser") {
+            CheckoutShippingFormData.fullname = form.fullname.value
+            CheckoutShippingFormData.email = form.email.value
+            CheckoutShippingFormData.address = form.address.value
+            CheckoutShippingFormData.city = form.city.value
+            CheckoutShippingFormData.contactnumber = form.contactnumber.value
+            CheckoutShippingFormData.alternatenumber = form.alternatenumber.value
+        }
+
+        function getCookie(name) {
+            var cookieArr = document.cookie.split(";");
+
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                if (name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+
+        var shippingdetails = JSON.parse(getCookie('shippingdetails'))
+        if (shippingdetails == undefined) {
+            shippingdetails = { 'Shippingdata': CheckoutShippingFormData }
+            document.cookie = 'shipping=' + JSON.stringify(shippingdetails) + ";domain=;path=/"
+        }
+        else {
+            shippingdetails = { 'Shippingdata': CheckoutShippingFormData }
+            document.cookie = 'shipping=' + JSON.stringify(shippingdetails) + ";domain=;path=/"
+        }
+
+
+    })
+</script>
+<script>
+    var user = '{{request.user}}'
+    var specialform = document.getElementById("specialform")
+
+    specialform.addEventListener("submit", function () {
+
+        var InstructionData = {
+            'instruction': specialform.specialinstructions
+
+        }
+
+        if (user == "AnonymousUser") {
+            InstructionData.instruction = specialform.specialinstructions.value
+
+        }
+        function getCookie(name) {
+            var cookieArr = document.cookie.split(";");
+
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                if (name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+        var specialinstruct = JSON.parse(getCookie('specialinstruction'))
+        if (specialinstruct == undefined) {
+            specialinstruct = { 'specialinstruct': InstructionData }
+            document.cookie = 'specialinstruct=' + JSON.stringify(specialinstruct) + ";domain=;path=/"
+        }
+    })
+
+
+
+</script>
+
+<script>
+    var user = '{{request.user}}'
+    var specialins = document.getElementById('specialinstruction').innerHTML
+    var paymentform = document.getElementById("paymentform")
+    var form = document.getElementById("form")
+
+
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+
+    paymentform.addEventListener("submit", function () {
+
+        var CheckoutShippingFormData = {
+            'total': total,
+            'fullname': null,
+            'email': null,
+            'address': null,
+            'city': null,
+            'contactnumber': null,
+            'alternatenumber': null
+
+        }
+
+        var SpecialInstruction = {
+            'instruction': specialins
+        }
+
+        if (user == "AnonymousUser") {
+            CheckoutShippingFormData.fullname = form.fullname.value
+            CheckoutShippingFormData.email = form.email.value
+            CheckoutShippingFormData.address = form.address.value
+            CheckoutShippingFormData.city = form.city.value
+            CheckoutShippingFormData.contactnumber = form.contactnumber.value
+            CheckoutShippingFormData.alternatenumber = form.alternatenumber.value
+
+        }
+
+
+
+
+        var PaymentMethod = {
+            'paymentmethod': null
+
+        }
+
+        if (user == "AnonymousUser") {
+            if (paymentform.radio.value == "COD") {
+                PaymentMethod.paymentmethod = "COD"
+            }
+
+            else {
+                PaymentMethod.paymentmethod = "ESEWA"
+            }
+
+        }
+
+
+        var url = '/shippinginfo'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/JSON',
+                'X-CSRFToken': csrftoken,
+
+            },
+            body: JSON.stringify({ 'form': CheckoutShippingFormData, 'payment': PaymentMethod, 'instruction': SpecialInstruction })
+
+        })
+
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+
+            })
+
+
+    })
+
+</script>
+
+<br>
+<br>
+
+
+{% include "footer.html" %}
+
+</html>

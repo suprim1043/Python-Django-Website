@@ -1,0 +1,10 @@
+certifi==2020.4.5.1
+chardet==3.0.4
+emoji==0.5.4
+face-recognition-models==0.3.0
+geographiclib==1.50
+geopy==1.21.0
+idna==2.9
+mercurial==4.8.2
+requests==2.23.0
+urllib3==1.25.9

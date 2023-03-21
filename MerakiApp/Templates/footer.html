@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'MerakiApp/footer.css' %}">
+
+</head>
+
+
+
+<footer>
+    <div class="footer">
+
+        <div class="footer-content">
+
+
+            <h3><a href="{% url 'products' %}">Meraki Cosmetics</h3>
+            </a>
+            <p>Follow us on</p>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/Meraki-Cosmetics-101686761763418" target="_blank"><i
+                            class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/meraki.cosmetics_____/" target="_blank"><i
+                            class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+
+        </div>
+        <div class="address" style="font-weight:lighter;">
+            <i>
+
+
+                <address style=" font-style: italic;">
+                    <span class=" fa fa-phone"> </span>
+                    <span>9818005117, 9813829794</span>
+                    <br>
+                    <span class="fa fa-envelope"></span>
+                    <span><a href="mailto:merakicosmetics10@gmail.com">Merakicosmetics10@gmail.com</a></span>
+                    <br>
+                    <span class="fa fa-map-marker"></span>
+                    <span>Kathmandu, Nepal 44600</span>
+
+                </address>
+            </i>
+
+        </div>
+
+        <div class="links">
+            <h3>Important Links</h3>
+            <ul>
+                <li>
+                    <a href="{% url 'products' %}">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                </li>
+                <li>
+                    <a href="{% url 'home' %}#contact">Contact</a>
+                </li>
+                <li>
+                    <a href="">Brands</a>
+                </li>
+                <li>
+                    <a href="#">Wholesale</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="footer-bottom">
+            <p> &copy;2021 Meraki Cosmetics.All rights reserved</p>
+        </div>
+
+
+</footer>
+
+
+
+</html>

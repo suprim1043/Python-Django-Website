@@ -1,0 +1,264 @@
+{% extends 'main.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/products.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <style>
+        .swal-text {
+            color: black;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #swal-span {
+            color: white;
+            border: 1px solid black;
+            background-color: black;
+            padding: 5px 20px 5px 20px;
+            transition: 0.4s;
+            font-size: 14px;
+            position: absolute;
+            top: 84%;
+            left: 5%;
+            margin-right: 5%;
+
+        }
+
+        #swal-span:hover {
+
+            color: black;
+            background-color: white;
+
+        }
+
+        .swal-button {
+            padding: 5px 45px 5px 45px;
+            font-family: "Poppins", sans-serif;
+            border-radius: 0px;
+            color: white;
+            background-color: black;
+
+            margin-top: 0%;
+            transition: 0.4s;
+            font-size: 14px;
+            top: 10%;
+            border: 1px solid black !important;
+
+
+        }
+
+        .swal-button:hover {
+
+            background-color: white !important;
+            border: 1px solid black;
+            color: black;
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="buffer-div">
+        <h3>Products</h3>
+        <br>
+        <span>Showing {{number}} results</span>
+        <form method="GET">
+            <select name="query" id="" value={{boxcontent}} onchange="this.form.submit();">
+                <option value="Sort" selected disabled>{{boxcontent}}</option>
+                <option value="SortByDateAdded">Sort By Date Added</option>
+                <option value="SortByBrand">Sort By Brand</option>
+                <option value="SortByPrice">Sort By Price: Low To High</option>
+                <option value="SortByPricedesc">Sort By Price: High To Low</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="container">
+
+
+
+
+        {% if messages %}
+        {% for message in messages  %}
+        {% if message.tags == "success" %}
+        <script>
+
+            const el = document.createElement('div')
+            el.innerHTML = " <a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+            swal({
+                icon: 'success',
+                title: 'Success ',
+                text: '{{message}}',
+
+                buttons: "Close",
+
+                content: el
+            })
+        </script>
+        {% elif message.tags == "error" %}
+        <script>
+            const el = document.createElement('div')
+            el.innerHTML = " <a href='{% url 'cart' %}'> <span id = 'swal-span'> View Your Cart </span></a>"
+            swal({
+                icon: 'info',
+                title: 'Info',
+                text: '{{message}}',
+
+                buttons: "Close",
+
+
+
+                content: el
+            })
+        </script>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+
+
+
+
+
+        <br>
+        <div class="grid-container">
+            {% for product in products   %}
+            <div class="grid">
+                {% if product.product_name.remainingquantity == 0 %}
+                <div class="outofstocklabel" style="padding-bottom:0px; ">
+                    Out of Stock
+                </div>
+                <br>
+
+                {% else %}
+
+                <div class="outofstocklabel" style="opacity: 0; padding-bottom:1.5px;">
+                    Out of Stock
+
+                </div>
+                <br>
+
+                {% endif %}
+                <img src="{{product.firstimage.url}}" loading="lazy" alt="">
+                <br>
+                <span>{{product.product_name|title}}</span>
+                <br>
+                <span style="font-weight: bolder; ">Rs.{{product.price}}</span>
+
+                <br>
+
+                {% if product.rate == 1 %}
+
+                <i class="fa fa-star" id="first"></i>
+                <i class="fa fa-star-o" id="second"></i>
+                <i class="fa fa-star-o" id="third"></i>
+                <i class="fa fa-star-o" id="fourth"></i>
+                <i class="fa fa-star-o" id="fifth"></i>
+
+                {% elif product.rate == 2 %}
+
+                <i class=" fa fa-star" id="first"></i>
+                <i class="fa fa-star" id="second"></i>
+                <i class="fa fa-star-o" id="third"></i>
+                <i class="fa fa-star-o" id="fourth"></i>
+                <i class="fa fa-star-o" id="fifth"></i>
+
+                {% elif product.rate == 3 %}
+
+                <i class=" fa fa-star" id="first"></i>
+                <i class="fa fa-star" id="second"></i>
+                <i class="fa fa-star" id="third"></i>
+                <i class="fa fa-star-o" id="fourth"></i>
+                <i class="fa fa-star-o" id="fifth"></i>
+
+                {% elif product.rate == 4 %}
+
+                <i class="fa fa-star" id="first"></i>
+                <i class="fa fa-star" id="second"></i>
+                <i class="fa fa-star" id="third"></i>
+                <i class="fa fa-star" id="fourth"></i>
+                <i class="fa fa-star-o" id="fifth"></i>
+
+                {% elif product.rate == 5 %}
+
+                <i class=" fa fa-star" id="first"></i>
+                <i class="fa fa-star" id="second"></i>
+                <i class="fa fa-star" id="third"></i>
+                <i class="fa fa-star" id="fourth"></i>
+                <i class="fa fa-star" id="fifth"></i>
+                {% else %}
+                <i class=" fa fa-star-o" id="first"></i>
+                <i class="fa fa-star-o" id="second"></i>
+                <i class="fa fa-star-o" id="third"></i>
+                <i class="fa fa-star-o" id="fourth"></i>
+                <i class="fa fa-star-o" id="fifth"></i>
+
+                {% endif %}
+
+                <br>
+                <br>
+
+                {% if not product.product_name.remainingquantity == 0 %}
+
+                <div class="link-div">
+                    <button data-product="{{product.productid}}" data-action="add" class="update-cart" name=""
+                        id="submit-btn" value="Add To Cart" style="margin-top: -10px;">Add To Cart</button>
+
+                    <a href="/productdescription/{{product.productid}}" data-product="{{product.productid}}"
+                        id=all-link>View Details</a>
+
+                </div>
+                <br>
+
+
+                {% else %}
+
+                <a href="/productdescription/{{product.productid}}" data-product="{{product.productid}}"
+                    id=all-link>View
+                    Details</a>
+                <br>
+
+
+
+
+                {% endif %}
+                <br>
+
+            </div>
+            <script>
+                var max = '{{product.allowedquantity}}'
+
+            </script>
+
+            {% endfor %}
+
+        </div>
+        <br>
+
+    </div>
+
+</body>
+
+
+
+
+
+</html>
+
+{% endblock %}
+{% include 'footer.html' %}

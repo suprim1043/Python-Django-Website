@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/resetcomplete.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Reset</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="image-container">
+        </div>
+
+
+        <div class="signup-container">
+            <div class="logo-text">
+                <a href="{% url 'home' %}" id="logo-text"> Meraki Cosmetics</a>
+                <br>
+            </div>
+
+            <div class="sign-up">
+
+                <label>Your Password has been successfully changed.</label>
+                <span></span>
+                <br>
+                <br>
+                <div class=" underline">
+                </div>
+                <br>
+
+
+                <a href="{% url 'login' %}"><button type="submit" id="submit">Login</button></a>
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

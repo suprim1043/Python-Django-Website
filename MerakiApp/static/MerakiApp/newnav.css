@@ -1,0 +1,509 @@
+@font-face {
+    font-family: 'Jonathan';
+    src: url('assets/Jonathan.ttf');
+
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+
+}
+
+
+#cart-total {
+
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    padding: 3px;
+    text-align: center;
+    float: right;
+    margin-top: 5px;
+    margin-left: -20px;
+    margin-right: 10px;
+    color: red;
+
+}
+
+@media(max-width:380px) {
+    #cart-total {
+        margin-right: 0px;
+        margin-left: -10px;
+    }
+}
+
+.di {
+    width: 100%;
+    height: 20vh;
+    background-color: white;
+}
+
+
+nav {
+    height: 80px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-color: #111;
+    overflow: hidden;
+
+
+}
+
+.logotext {
+    font-family: "Jonathan", sans-serif;
+    font-size: 4rem;
+    position: relative;
+    top: 20%;
+    color: white;
+    left: 2%;
+}
+
+.logotext:hover {
+    color: wheat;
+
+
+}
+
+.menu-icon {
+    width: 45px;
+    cursor: pointer;
+    display: none;
+}
+
+.search-btn {
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 35px;
+    padding: 10px;
+    margin-left: -50px !important;
+
+}
+
+nav ul {
+    float: right;
+    margin-right: 40px;
+
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin-right: 20px;
+
+
+}
+
+
+nav ul li a {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-size: 16px;
+
+}
+
+nav ul li a:hover {
+    color: red !important;
+}
+
+nav ul li button {
+    font-family: "Poppins", sans-serif;
+    background: none;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+nav ul li button:hover {
+    color: red;
+}
+
+.cart {
+
+    float: right;
+    margin-top: 21px;
+    margin-left: 10px;
+    margin-right: 20px;
+
+
+}
+
+.menu-btn {
+
+    width: 45px;
+    margin-right: 0px;
+    display: none;
+    margin-left: 10px;
+    margin-top: 10px;
+
+
+
+}
+
+.search-box {
+
+    padding: 70px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    height: 30%;
+    background-color: wheat;
+    display: none;
+
+
+}
+
+
+
+.search-box input {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-family: monospace;
+    background-color: black;
+    border: 1px solid black;
+    outline: none;
+    color: white;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-size: 13px;
+
+
+}
+
+.search-box label {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    font-size: 3rem;
+    font-family: "Jonathan";
+    color: black;
+    width: 100%;
+
+}
+
+.search-btn {
+    margin-left: -60px;
+
+}
+
+#button-input {
+    height: 32px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    width: 25%;
+    margin-top: 5px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+
+
+
+#button-input:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+
+
+
+
+@media (max-width:1100px) {
+
+
+    .logotext {
+        font-size: 4rem;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+
+nav ul li a:hover {
+    color: white
+}
+
+@media (max-width:958px) {
+    .logotext {
+        font-size: 3rem;
+        margin-left: 33%;
+        position: relative;
+        top: 30%;
+        font-size: 3rem;
+        text-align: center;
+    }
+    #button-input {
+  
+    width: 30%;
+  
+}
+
+
+
+
+    nav ul {
+        background-color: black !important;
+        top: 10%;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        transition: all .5s;
+        display: none;
+        height: 100%;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        color: white;
+
+    }
+
+    nav ul li button {
+        display: none;
+    }
+
+    nav ul li img {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+        float: left;
+        width: 40px;
+        margin-top: 17px;
+
+
+    }
+
+    .cart {
+
+
+        float: right;
+        margin-top: 21px;
+        margin-left: 10px;
+        margin-right: 20px;
+
+
+
+
+    }
+
+    nav ul li {
+        display: block;
+        margin-top: 20px;
+    }
+
+
+
+
+}
+
+@media (max-width:600px) {
+
+
+    .logotext {
+        margin-left: 25%;
+    }
+
+
+    nav {
+        width: 100%;
+        left: 20%;
+    }
+    #button-input {
+        font-size: 12px;
+        margin-left: -10px;
+  
+    width: 60%;
+  
+}
+
+
+
+
+
+}
+
+
+@media (max-width:400px) {
+
+
+
+    nav ul {
+
+        position: absolute;
+        background-color: black;
+        width: 100%;
+    }
+
+
+
+    .menu-btn {
+        display: block;
+        float: left;
+        width: 35px;
+        margin-top: 23px;
+
+
+
+    }
+   
+
+    .search-btn {
+        margin-right: -0% !important;
+    }
+
+
+    .logotext {
+        margin-left: 33%;
+        position: relative;
+        top: 25%;
+        font-size: 3rem;
+        text-align: center;
+
+
+    }
+
+    .cart {
+        margin-right: 3% !important;
+        width: 30px;
+        margin-top: 22px;
+        float: right;
+
+    }
+
+
+
+    .search-box button {
+        font-size: 10px;
+        padding: 10px;
+        margin-top: 8px;
+    }
+
+    .search-box label {
+        font-size: 3rem;
+        margin-right: 100px;
+        margin-left: -7.5%;
+    }
+}
+
+
+@media (max-width:500px) {
+
+
+    .search-box button {
+        margin-left: 20px;
+        margin-top: 0px;
+    }
+
+    .search-box label {
+        margin-left: 10px;
+    }
+
+
+}
+
+
+@media (max-width:420px) {
+    .logotext {
+        margin-left: 15%;
+        font-size: 3rem;
+        top: 25%;
+    }
+
+
+    .search-box input {
+        width: 140%;
+        text-align: center;
+        padding: 10px;
+        margin-left: -50px;
+
+
+    }
+}
+
+
+
+@media (max-width:380px) {
+    .logotext {
+        margin-left: 14%;
+        font-size: 3rem;
+    }
+
+
+
+    .search-box input {
+
+        text-align: center;
+        padding: 10px;
+
+
+    }
+
+    .nav {
+        width: 100%;
+
+    }
+
+    .cart {
+
+        margin-right: 0px;
+
+    }
+
+    .search-box button {
+        margin-top: 2px;
+    }
+}
+
+
+
+.input-div {
+    border: 1px solid black;
+    height: 6vh;
+    width: 100%;
+}
+
+@media (max-width:321px) {
+    .logotext {
+        left: -5%;
+        font-size: 2.8rem !important;
+
+
+    }
+
+
+
+    .search-box input {
+        margin-top: -12px;
+        width: 160%;
+        font-size: 12px;
+        margin-bottom: 0px;
+
+
+
+    }
+
+
+}

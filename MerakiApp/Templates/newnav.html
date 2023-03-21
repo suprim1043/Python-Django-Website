@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'MerakiApp/newnav.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="static/MerakiApp/images/Meraki Website Icon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="nav">
+        <a href="{% url 'products' %}" class="logotext a"> Meraki Cosmetics</a>
+        <img src="{%static 'MerakiApp/assets/white-icon.jpg' %}" alt="" class="menu-btn" onclick="myfunction()">
+
+        <p id="cart-total">{{total}}</p>
+        <a href="{% url 'cart' %}"><img src="{%static 'MerakiApp/assets/cart.svg' %}" alt="Cart" class="cart"></a>
+        <i class="search-btn fa fa-search fa-lg" style="color: white;" id="anchor" onclick="searchfuntion()"></i>
+        <ul id="ulTest">
+
+
+            {% if request.user.is_authenticated %}
+            <li>
+                <a href="{% url 'products' %}" id="anchor">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="{% url 'home' %}">Best Sellers</a>
+            </li>
+            <li>
+                <a href="{% url 'order' %}" id="anchor">Track Order</a>
+            </li>
+             <!--
+            <li>
+                <a href="{% url 'profile' %}">Profile</a>
+            </li>
+         -->
+            <li>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% else %}
+            <li>
+                <a href="{% url 'products' %}" id="anchor">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="{% url 'home' %}">Best Sellers</a>
+            </li>
+            <li>
+                <a href="{% url 'order' %}" id="anchor" onclick="searchfunction()">Track Order</a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+
+
+
+
+
+
+
+        </ul>
+
+
+
+    </nav>
+
+    <div class="search-box" id="search-id">
+
+        <form method="get" action="search" target="_self">
+            <label id="logo-label">Meraki Cosmetics</label>
+
+            <li>
+                <input type="search" name="query" id="search-input" autocomplete="off"
+                    placeholder="What are you searching for?" select>
+            </li>
+
+            <li> <button id="button-input">Search</button></li>
+        </form>
+    </div>
+</body>
+
+<script>
+
+    var list = document.getElementById('ulTest')
+    var input = document.getElementById("search-input")
+    var search = document.getElementById('search-id')
+    var divv = document.getElementById("content")
+    var nav = document.getElementById('nav')
+    var carttotal = document.getElementById("cart-total")
+    const box = document.querySelector(".search-box")
+    search.style.display = "none"
+    list.style.display = "block"
+    list.style.left = "-100%";
+
+
+    function myfunction() {
+        if (list.style.left == "-100%") {
+            list.style.left = "0";
+            document.body.style.overflowY = "hidden";
+        } else {
+            list.style.left = "-100%"
+            document.body.style.overflowY = "scroll";
+
+        }
+    }
+
+
+    function searchfuntion() {
+        if (search.style.display === "none") {
+            list.style.left = "-100%";
+            search.style.display = "block";
+            input.select();
+
+        } else {
+            search.style.display = "none";
+        }
+    }
+
+    document.addEventListener("click", function (event) {
+        if (event.target.id === "search-id") {
+
+            return
+
+        } else if (event.target.id === "anchor") {
+
+            return
+
+        } else if (event.target.id === "search-input" || event.target.id === "button-input" || event.target
+            .id === "logo-label" || event.target.id === "inner-div") {
+
+            return
+
+        } else {
+            search.style.display = "none"
+        }
+
+    })
+
+
+
+
+
+
+</script>
+
+
+
+
+</html>

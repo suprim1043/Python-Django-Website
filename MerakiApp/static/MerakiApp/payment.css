@@ -1,0 +1,302 @@
+@font-face {
+    font-family: 'Jonathan';
+    src: url('assets/Jonathan.ttf');
+
+}
+
+
+html{
+     scroll-behavior: smooth;
+}
+body{
+    font-family: "Poppins",sans-serif;
+    overflow: scroll;
+   
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+.container{
+
+display: flex;
+justify-content: space-between;
+margin-top: -15px;
+
+}
+
+.logo-text {
+
+    text-align: center;
+    margin-bottom: 30px !important;
+    background-color: wheat;
+    padding-top: 15px;    
+    
+}
+
+
+#logo-text {
+    text-decoration: none;
+    color: black;
+    font-size: 4rem;
+    font-family: "Jonathan";
+}
+
+
+#edit-link{
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+    color: white;
+    left: 2%;
+    top: 3.5%;
+    background-color: black;
+    padding: 5px 20px 5px 20px;
+    border: none;
+    transition: 0.4s;
+    cursor: pointer;
+}
+#edit-link:hover{
+    border: none;
+    background-color: wheat;
+    color: black;
+}
+
+
+
+#edit-link-link{
+  text-decoration: none;
+    font-family: "Poppins",sans-serif;
+    color: white;
+    left: 2%;
+    top: 3.5%;
+    background-color: black;
+    padding: 5px 20px 5px 20px;
+    border: none;
+    transition: 0.4s;
+    cursor: pointer;
+}
+#edit-link-link:hover{
+    border: none;
+    background-color: wheat;
+    color: black;
+}
+
+.shipping-form{
+    margin-left: 0%;
+    width: 100%;
+    background-color: whitesmoke;
+    text-align: center;
+    padding-top: 40px;
+    height: 0%;
+    padding-bottom: 20px;
+}
+
+
+
+.right-container {
+    text-align: center;
+    background-color: whitesmoke;
+    width: 100%;
+    display: none;
+
+}
+
+#instruction-form{
+    display: none;
+    border: none;
+    margin-top: 50px;
+    text-align: center;
+  
+
+   
+}
+
+
+
+#instruction-form button{
+
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 20%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    text-align: center;
+    transition: 0.4s;
+
+}
+ input {
+
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-top:10px;
+    outline: none;
+    background-color: transparent;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+
+   
+
+}
+
+.underline {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: black;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+
+
+#submit {
+
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+.payment-method{
+    margin-left:0%;
+    width: 100%;
+    background-color: wheat;
+
+} 
+
+
+
+      .radio-buttons {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+
+      }
+
+     #payment-h3{
+        text-align: center;
+
+      }
+
+      .custom-radio input {
+        display: none;
+        
+      }
+
+      .radio-btn {
+        margin: 10px;
+        width: 180px;
+        height: 200px;
+        border: 3px solid transparent;
+        display: inline-block;
+        border-radius: 10px;
+        position: relative;
+        text-align: center;
+        box-shadow: 0 0 20px #c3c3c367;
+        background-color: white; 
+        cursor: pointer;
+
+      }
+
+
+      .radio-btn .hobbies-icon {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        background-color: none;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+      }
+      .hobbies-icon img{
+          width: 100%;
+          margin-left: -60%;
+          height: 90%;
+          object-fit: cover;
+      }
+
+      .esewa img{
+          width: 200%;
+          margin-left: -50%;
+          height: 100%;
+          object-fit: cover;
+
+      }
+
+      .radio-btn .hobbies-icon i {
+        color:black;
+        line-height: 80px;
+        font-size: 60px;
+      
+      }
+
+      #FONEPAY{
+        background-color: red; 
+        width: 200%;     
+}
+
+      .radio-btn .hobbies-icon h3 {
+        color: black;
+        font-family: "Raleway", sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        width: 100%;
+        text-transform: uppercase;
+
+      }
+
+      .custom-radio input:checked + .radio-btn {
+        border: 3px solid black;
+      }
+
+
+
+#submit-btn-out{
+    margin: 5px;
+    color: white;
+    background-color: white;
+    border: 1px solid black;
+    font-family:monospace;
+    font-size: 14px;
+    padding: 8px 0px 7px 0px;
+    height: 31px;  
+    border-radius: 2px;
+    transition: 0.4s;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-right: -111px;
+    cursor: none;
+
+}

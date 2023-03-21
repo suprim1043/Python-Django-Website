@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MerakiApp/ordertracking.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" href="static/MerakiApp/images/Meraki Website Icon.png">
+    <title>Tracking</title>
+
+</head>
+
+
+
+
+
+<body>
+
+    {% for message in messages  %}
+    <script>
+        swal('Could Not Find Any Order', "{{message}}", "error")
+    </script>
+
+    {% endfor %}
+
+    <div class="buffer-div">
+        {% if orderstatus.status == "Order Placed" %}
+        <h3 id="buffer-h3">Order Placed</h3>
+        {% elif orderstatus.status == "Aclnowledged" %}
+        <h3 id="buffer-h3">Order Accepted</h3>
+        {% elif orderstatus.status == "Out For Delivery" %}
+        <h3 id="buffer-h3">Out For Delivery</h3>
+        {% elif orderstatus.status == "Delivered" %}
+        <h3 id="buffer-h3"> Delivered</h3>
+        {% else %}
+        <h3 id="buffer-h3">Track Your Order</h3>
+        {% endif %}
+        <br>
+
+        <a href="{% url 'home'%}" id="all-link"> Home Page</a>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <form method="GET" id="form-container">
+            <input type=" char" name="orderid" id="" placeholder="Enter Your Order ID" maxlength="14">
+            <br>
+            <br>
+            <div class="underline">
+            </div>
+            <br>
+            <button type="submit" id="submit" onsubmit="hideformfunction();">
+                View Status
+            </button>
+
+
+        </form>
+
+        <div class="container px-1 px-md-4 py-5 mx-auto status" id="orderstatus">
+            {% if orderstatus %}
+            <div class="card">
+                <br>
+                <span id="orderid">Order ID : {{orderstatus.orderid}}</span>
+
+                <br>
+                <button type="button" id="detail-btn" onclick="viewdetails();">View Order Details</button>
+                <div class="row d-flex justify-content-between px-3 top">
+
+                    <div class="d-flex flex-column text-sm-right" style="width:100%;">
+
+                        {% if orderstatus.expectedarrival %}
+                        {% if orderstatus.status == "Delivered" %}
+
+                        {% else %}
+                        <p class="mb-0" style="text-align:center;font-size:18px;" id="arrival">Estimated Arrival Date,
+                            <span>{{orderstatus.expectedarrival}}</span></p>
+
+                        {% endif %}
+
+
+
+                        {% endif %}
+
+
+
+                    </div>
+
+                </div>
+                {% endif %}
+
+                <div id="orderprogress">
+
+                    {% if orderstatus.status == "Order Placed" %}
+                    <div class=" row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" class="text-center">
+                                <li class="active step0"></li>
+                                <li class="step0"></li>
+                                <li class="step0"></li>
+                                <li class="step0"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% elif orderstatus.status == "Acknowledged" %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" class="text-center">
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                                <li class="step0"></li>
+                                <li class="step0"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% elif orderstatus.status == "Out For Delivery" %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" class="text-center">
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                                <li class="step0"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% elif orderstatus.status == "Delivered" %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" class="text-center">
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                                <li class="active step0"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+
+
+                {% if orderstatus %}
+
+                <div class="row justify-content-between top" id="ordericons">
+                    <div class="row d-flex icon-content"> <img class="icon"
+                            src="https://img.icons8.com/pastel-glyph/256/000000/fast-cart.png" />
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Order<br>Placed</p>
+                        </div>
+                    </div>
+                    <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Order<br> Accepted</p>
+                        </div>
+                    </div>
+                    <div class="row d-flex icon-content"> <img class="icon" src="https://i.imgur.com/TkPm63y.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Order<br>En Route</p>
+                        </div>
+                    </div>
+                    <div class="row d-flex icon-content"> <img class="icon"
+                            src="https://img.icons8.com/wired/256/000000/home.png" />
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Order<br>Delivered</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="order-details-container" id="orderdetails">
+                <div class="order-details">
+                    <div class="shipping-address">
+                        <span id="inner-span-header">Shipping Details</span>
+                        <br>
+                        <span id="inner-span">
+                            <br>
+                            {{shipping.customer.name|title}}
+                            <br>
+                            {{shipping.address|title}}
+                            <br>
+                            {{shipping.city|title}}
+                            <br>
+                            {{shipping.contactnumber|title}}, {{shipping.alternatenumber|title}}
+                        </span>
+                    </div>
+
+
+
+                    <div class="ordered-items">
+                        <span id="inner-span-header">Ordered Items</span>
+                        <br>
+                        <br>
+
+                        {% for items in orderitems  %}
+
+                        <span id="inner-span">
+                            {{items.product}}
+                        </span>
+                        <br>
+
+                        {% endfor %}
+                    </div>
+                    <div class="ordered-items">
+                        <span id="inner-span-header">Quantity</span>
+                        <br>
+                        <br>
+                        {% for items in orderitems  %}
+
+                        <span id="inner-span">
+                            {{items.quantity}}
+                            <br>
+
+                        </span>
+
+                        {% endfor %}
+                    </div>
+
+                    <div class="ordered-items">
+                        <span id="inner-span-header">Price</span>
+                        <br>
+                        <br>
+
+                        {% for items in orderitems  %}
+
+                        <span id="inner-span">
+                            Rs. {{items.product.price}}
+
+                        </span>
+                        <br>
+
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="order-total">
+                    <span>
+                        Total : Rs. {{orderstatus.get_cart_total_with_shipping}}
+                        <br>
+                        <span style="font-size: 13px;">
+                            Including Rs.100 Standard Delivery Charge
+                        </span>
+                    </span>
+                </div>
+                <br>
+
+            </div>
+
+        </div>
+        <button type="button" id="submit-2" onclick="showfunction()">Track Another Order</button>
+    </div>
+    {% endif %}
+
+
+
+
+    </div>
+
+
+    <script>
+        var statu = document.getElementById("orderstatus")
+        var formcont = document.getElementById("form-container")
+        var submi = document.getElementById("submit")
+        var h3if = document.getElementById("buffer-h3")
+        var anotherbtn = document.getElementById("submit-2")
+        var orderdetails = document.getElementById("orderdetails")
+        var ordericons = document.getElementById("ordericons")
+        var orderprogress = document.getElementById("orderprogress")
+        var detailbtn = document.getElementById("detail-btn")
+        var arrival = document.getElementById("arrival")
+
+
+        orderdetails.style.display = "none";
+
+
+        function showfunction() {
+            statu.style.display = "none";
+            formcont.style.display = "block";
+            anotherbtn.style.display = "none";
+            h3if.innerHTML = "Track Your Order";
+
+        }
+
+        function hideformfunction() {
+            formcont.style.display = "none";
+            statu.style.display = "block";
+        }
+        function viewdetails() {
+            if (orderdetails.style.display == "none") {
+                orderdetails.style.display = "block";
+                ordericons.style.opacity = "0";
+                orderprogress.style.opacity = "0";
+                detailbtn.innerHTML = "View Order Status";
+                arrival.style.display = "none";
+            }
+            else {
+                orderdetails.style.display = "none";
+                ordericons.style.opacity = "1";
+                orderprogress.style.opacity = "1";
+                detailbtn.innerHTML = "View Order Details";
+                arrival.style.display = "block";
+
+            }
+
+        }
+    </script>
+
+</body>
+{% include "footer.html" %}
+
+</html>
