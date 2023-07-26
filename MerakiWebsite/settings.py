@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '1e^u1wr*akzfv&6+h7_g*tz^vstzvs2u1-lr+9u)f8uiz-jwsc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['https://merakicosmetics.herokuapp.com','http://127.0.0.1:8000']
 
 
 # Application definition
