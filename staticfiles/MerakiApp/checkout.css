@@ -1,0 +1,233 @@
+@font-face {
+    font-family: 'Jonathan';
+    src: url('assets/Jonathan.ttf');
+
+}
+
+
+html{
+     scroll-behavior: smooth;
+}
+body{
+    font-family: "Poppins",sans-serif;
+    overflow: scroll;
+   
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+.container{
+
+display: flex;
+justify-content: space-evenly;
+margin-top: -15px;
+}
+.logo-text {
+
+    text-align: center;
+    margin-bottom: 30px !important;
+    background-color: wheat;
+    padding-top: 15px;
+        
+    
+}
+
+
+#logo-text {
+    text-decoration: none;
+    color: black;
+    font-size: 4rem;
+    font-family: "Jonathan";
+}
+
+
+#cart-link{
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    left: 2%;
+    top: 3.5%;
+    background-color: black;
+    padding: 5px 20px 5px 20px;
+    border: none;
+    transition: 0.4s;
+}
+#cart-link:hover{
+    border: none;
+    background-color: wheat;
+    color: black;
+}
+
+.left-container{
+
+    width: 60%;
+    height: 85vh;
+    margin-left: 1%;
+    overflow: scroll;
+   
+}
+
+
+#outofstockspan{
+    background-color: red;
+    color: red;
+}
+
+
+.left-container h3{
+
+    margin-top: 0px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.items-total{
+    width: 80%;
+
+    display: flex;
+    justify-content: space-between;
+}
+.right-container{
+
+    width: 38%;
+    height: 85vh;
+    background-color: white;
+}
+
+.right-container label{
+    font-size: 15px;
+}
+.right-container h3{
+
+    margin-top: 0px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.cart-items{
+
+    display: flex;
+    margin-top: 1%;
+}
+.cart-items img{
+    margin-left: 5%;
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+    
+}
+
+
+table {
+margin-left: 2%;
+background-color:whitesmoke;
+width: 100%;
+margin-top: 2%;
+
+
+}
+th{
+width: 20px;
+padding: 20px;
+padding-bottom: 20px;
+}
+td{
+margin-top: 0px;
+padding: 10px;
+
+    text-align: center;
+}
+
+
+
+.td-container{
+
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 40px;
+    width: 60%;
+
+
+}
+
+.total{
+
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    background-color: black;
+    padding-bottom: 10px;
+}
+
+
+.right-container {
+    text-align: center;
+}
+.right-container input {
+
+    width: 60%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-top:10px;
+    outline: none;
+    background-color: transparent;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.underline {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: black;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.sign-up {
+    margin-top: 30px;
+}
+
+#submit {
+
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+.address-container{
+    border: 1px solid black;
+}
+
+.address{
+border: 1px solid red;
+}
+
+

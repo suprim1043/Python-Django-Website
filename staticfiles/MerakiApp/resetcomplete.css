@@ -1,0 +1,212 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+.container {
+    height: 95vh;
+    overflow: scroll;
+}
+
+@font-face {
+    font-family: 'Jonathan';
+    src: url('assets/Jonathan.ttf');
+
+}
+
+.image-container {
+    width: 48%;
+    height: 95%;
+    float: right;
+    position: absolute;
+    top: 2%;
+    left: 51%;
+    background-color: wheat;
+    text-align: center;
+}
+
+
+
+.signup-container {
+
+    width: 50%;
+    float: left;
+    height: 80%;
+    text-align: center;
+    font-family: monospace;
+    font-weight: lighter;
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+
+
+
+@media (max-width:500px) {
+
+    .signup-container label {
+        margin-top: -20px !important;
+
+    }
+
+    .logo-text {
+        margin-bottom: -0px !important;
+
+
+    }
+
+
+}
+
+
+@media (max-width:500px) {
+
+
+    .signup-container label {
+        font-size: 20px !important;
+
+    }
+}
+
+@media (max-width:1025px) {
+    .image-container {
+        display: none;
+    }
+
+
+    .signup-container {
+
+        height: 80%;
+        width: 100%;
+
+    }
+
+
+    .signup-container label {
+        font-size: 30px;
+
+    }
+
+    .logo-text {
+        margin-bottom: -0px !important;
+
+
+    }
+
+
+}
+
+@media (min-height:1100px) {
+    .image-container {
+        height: 53%;
+        margin-top: -30px;
+    }
+
+
+}
+
+
+@media (max-width:769px) {
+
+
+    .signup-container input {
+        margin: 15px;
+        margin-bottom: 2px;
+        font-family: monospace;
+        font-size: 12px;
+
+    }
+
+    .signup-container {
+
+        height: 80%;
+        width: 100%;
+
+    }
+
+
+
+}
+
+
+.sign-up label {
+    text-align: left !important;
+    font-size: 20px;
+
+}
+
+
+
+.underline {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: grey;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.sign-up {
+    margin-top: 30px;
+}
+
+
+
+.signup-container span {
+
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: 200;
+    color: grey;
+}
+
+#login-a:hover {
+
+    padding-left: 8px;
+
+}
+
+
+#submit {
+
+    height: 38px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    outline: none;
+    background-color: black;
+    font-family: monospace;
+    text-align: center;
+    transition: 0.4s;
+}
+
+#submit:hover {
+    background-color: wheat;
+    color: black;
+    border: none;
+}
+
+
+
+.logo-text {
+    font-size: 4rem;
+    font-family: "Jonathan";
+    margin-top: 20px;
+    margin-bottom: 30px !important;
+}
+
+#logo-text {
+    text-decoration: none;
+    color: black;
+
+}
