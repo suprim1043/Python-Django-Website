@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,7 +155,7 @@
                 <br>
 
                 {% endif %}
-                <img src="{{product.firstimage.url}}" loading="lazy" alt="">
+                <img src="/{{product.firstimage.url}}" loading="lazy" alt="">
                 <br>
                 <span>{{product.product_name|title}}</span>
                 <br>
