@@ -1,1 +1,1 @@
-web: gunicorn MerakiWebsite.wsgi
+web: gunicorn MerakiApp.wsgi
