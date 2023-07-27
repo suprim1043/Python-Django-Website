@@ -1,1 +1,1 @@
-web: gunicorn MerakiApp.wsgi --log-file -
+web: gunicorn MerakiApp.wsgi
